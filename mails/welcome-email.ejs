@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Email</title>
+    <style>
+      /* Reset styles for email compatibility */
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Main container */
+      .email-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+      }
+
+      /* Header */
+      .header {
+        text-align: center;
+        padding: 20px 0;
+        background-color: #007bff;
+        color: #ffffff;
+      }
+
+      .header h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+
+      /* Content */
+      .content {
+        padding: 20px;
+        background-color: #ffffff;
+        color: #333333;
+        line-height: 1.6;
+      }
+
+      .content h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+
+      .content p {
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+
+      /* Button */
+      .button {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        color: #777777;
+        background-color: #f1f1f1;
+      }
+
+      .footer a {
+        color: #007bff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <!-- Header -->
+      <div class="header">
+        <h1>Welcome to Trust HealthCare!</h1>
+      </div>
+
+      <!-- Content -->
+      <div class="content">
+        <h2>Hello <%= name %>,</h2>
+        <p>
+          Thank you for joining Trust HealthCare. We're excited to have you on
+          board and look forward to helping you achieve your goals.
+        </p>
+        <p>Here are a few things you can do to get started:</p>
+        <ul>
+          <li>Complete your profile setup.</li>
+          <li>Explore our features and services.</li>
+          <li>Reach out to our support team if you have any questions.</li>
+        </ul>
+        <a href="#" class="button">Get Started</a>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>
+          If you have any questions, feel free to
+          <a href="mailto:support@yourcompany.com">contact us</a>.
+        </p>
+        <p>
+          &copy; <%= new Date().getFullYear() %> Trust HealthCare. All rights
+          reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
