@@ -7,9 +7,9 @@ import ErrorMiddleware from "./middlewares/error";
 import authRouter from "./routes/auth.routes";
 import userRouter from "./routes/user.route";
 
-export const app = express();
-// Juo4uxn97vBJUoDl
 dotenv.config();
+
+export const app = express();
 
 // access to use parse data from server as json and also set a limit of data to be parsed
 app.use(express.json({ limit: "50mb" }));
@@ -28,7 +28,7 @@ const allowedOrigins = [
 // cors
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
