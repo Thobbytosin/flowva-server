@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 
 const allowedOrigins = [
   process.env.NODE_ENV === "development" && "http://localhost:5173",
-  "https://e-learning-edu.onrender.com",
+  "https://flowva-client.onrender.com",
 ].filter(Boolean);
 
 // cors
