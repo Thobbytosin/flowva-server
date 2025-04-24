@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-import { IUser } from "../models/user.model";
-import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import { NextFunction, Request, Response } from "express";
 import { accessTokenOptions, refreshTokenOptions } from "../utils/tokens";
+import { IUser } from "../models/user.model";
 
 dotenv.config();
 
@@ -34,7 +34,7 @@ export const signInWithCredentials = async (
   // send response to the client
   res.status(statusCode).json({
     success: true,
-    message: "Signed in successfully",
+    message: "Logged in successfully",
     user,
   });
 };

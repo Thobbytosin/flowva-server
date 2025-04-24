@@ -1,15 +1,21 @@
 import mongoose, { Document, Schema, Model } from "mongoose";
 
 export interface IRegistration {
-  name: string;
   email: string;
   password: string;
   avatar?: string;
   verified?: boolean;
 }
 
+export type IUserPreferences = {
+  selfDescription: string;
+  work: string[];
+  country: string;
+  toolStack: string[];
+  goals: string[];
+};
+
 export interface IUser extends Document {
-  name: string;
   email: string;
   password: string;
   avatar?: {
@@ -19,14 +25,18 @@ export interface IUser extends Document {
   verified: boolean;
   lastLogin: Date;
   lastPasswordReset: Date;
+  googleRegistered: boolean;
+  prefernces?: {
+    selfDescription: string;
+    work: string[];
+    country: string;
+    toolStack: string[];
+    goals: string[];
+  };
 }
 
 const userSchema: Schema<IUser> = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
@@ -48,6 +58,17 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
     lastPasswordReset: {
       type: Date,
       default: null,
+    },
+    googleRegistered: {
+      type: Boolean,
+      default: false,
+    },
+    prefernces: {
+      selfDescription: { type: String },
+      work: [{ type: String }],
+      country: { type: String },
+      toolStack: [{ type: String }],
+      goals: [{ type: String }],
     },
   },
   { timestamps: true }

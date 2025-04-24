@@ -9,7 +9,7 @@ interface EmailOptions {
   email: string;
   subject: string;
   templateName: string;
-  templateData: Record<string, string>;
+  templateData?: Record<string, string>;
 }
 
 export const sendMail = async (options: EmailOptions) => {
@@ -29,7 +29,10 @@ export const sendMail = async (options: EmailOptions) => {
 
   const templatePath = path.join(__dirname, "../mails", options.templateName);
 
-  const html: string = await ejs.renderFile(templatePath, options.templateData);
+  const html: string = await ejs.renderFile(
+    templatePath,
+    options.templateData ?? {}
+  );
 
   const mailOptions = {
     from: process.env.SMTP_USER,

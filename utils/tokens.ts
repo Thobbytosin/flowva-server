@@ -33,19 +33,3 @@ export const refreshTokenOptions: ITokenOptions = {
   sameSite: isProduction ? "none" : "lax",
   secure: isProduction,
 };
-
-// verification token cookies options
-export const verificationTokenOptions: ITokenOptions = {
-  maxAge: 5 * 60 * 1000, // 5 miuntes
-  httpOnly: true,
-  sameSite: isProduction ? "none" : "lax",
-  secure: isProduction,
-};
-
-// reset token cookies options
-export const resetTokenOptions: ITokenOptions = {
-  maxAge: 5 * 60 * 1000, // 5 miuntes
-  httpOnly: true,
-  sameSite: isProduction ? "none" : "lax",
-  secure: isProduction,
-};

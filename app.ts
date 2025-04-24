@@ -5,10 +5,10 @@ import cors from "cors";
 import { rateLimit } from "express-rate-limit";
 import ErrorMiddleware from "./middlewares/error";
 import authRouter from "./routes/auth.routes";
-import { checkCookieConsent } from "./middlewares/cookie-consent";
+import userRouter from "./routes/user.route";
 
 export const app = express();
-
+// Juo4uxn97vBJUoDl
 dotenv.config();
 
 // access to use parse data from server as json and also set a limit of data to be parsed
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
 );
@@ -38,8 +38,8 @@ const limiter = rateLimit({
 });
 
 // ROUTES
-app.use("/api/v1/auth", checkCookieConsent, authRouter);
-// app.use("/api/v1/user", checkCookieConsent, userRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
 
 // test api
 app.get("/test", async (req, res) => {
@@ -47,14 +47,13 @@ app.get("/test", async (req, res) => {
 });
 
 // unknown route
-app.all("*", (req, res, next) => {
+app.use((req, res, next) => {
   const error = new Error(`Route ${req.originalUrl} not found`) as any;
   error.statusCode = 400;
   next(error);
 });
 
 // MIDDLEWARES
-
 // limit requests to server per 15 minutes
 app.use(limiter);
 
