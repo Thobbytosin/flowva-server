@@ -20,15 +20,10 @@ app.use(cookieParser());
 // access to send form data from server
 app.use(express.urlencoded({ extended: false }));
 
-const allowedOrigins = [
-  process.env.NODE_ENV === "development" && "http://localhost:5173",
-  "https://flowva-client.onrender.com",
-].filter(Boolean);
-
 // cors
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: process.env.CLIENT_URL,
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
