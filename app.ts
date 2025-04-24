@@ -20,10 +20,15 @@ app.use(cookieParser());
 // access to send form data from server
 app.use(express.urlencoded({ extended: false }));
 
+const allowedOrigins = [
+  process.env.NODE_ENV === "development" && "http://localhost:5173",
+  "https://e-learning-edu.onrender.com",
+].filter(Boolean);
+
 // cors
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: allowedOrigins,
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
